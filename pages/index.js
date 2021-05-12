@@ -14,6 +14,7 @@ export default function Home() {
 
     const fetchedToken = await getToken(values);
 
+    const ethics_token = typeof window !== 'undefined' ? localStorage.setItem('ethics_token', fetchedToken) : null
     setToken(fetchedToken);
 
     setUsername(values.username);
