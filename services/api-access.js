@@ -53,7 +53,7 @@ export async function fetchWithToken(url, token) {
   const response = await axios.get(url, config);
 
   const dilemmas = response.data.map(info => new Dilemma(info));
-
+  console.log(dilemmas)
   return dilemmas;
 }
 
@@ -79,10 +79,18 @@ export async function postWithToken(token, values) {
 
 
 // helper function to handle getting Authorization headers EXACTLY right
+
 function makeConfig(token) {
   return {
     headers: {
-      'Authorization': 'Bearer ' + token
+      'Authorization': 'JWT ' + token
     }
   }
 }
+// function makeConfig(token) {
+//   return {
+//     headers: {
+//       'Authorization': 'Bearer ' + token
+//     }
+//   }
+// }

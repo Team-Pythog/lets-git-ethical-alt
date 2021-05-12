@@ -1,4 +1,5 @@
 export default function DilemmaDetail({ dilemma }) {
+  console.log("hello")
   return (
     <section key={dilemma.id} className="w-full my-4">
       <h2>{dilemma.title}</h2>

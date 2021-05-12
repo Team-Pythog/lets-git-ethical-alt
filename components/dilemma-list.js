@@ -1,13 +1,14 @@
-import Dilemma from './dilemma'
+import DilemmaDetail from './dilemma'
 
 export default function DilemmaList({ dilemmas }) {
   return (
-    <div>
-      <ul>
-        {dilemmas.map((dilemma, i) => {
-          <Dilemma data={dilemma} />
-        })}
-      </ul>
+    <div id = "balls">
+      {dilemmas.map((dilemma, i) => {
+        console.log(dilemma);
+        return (<DilemmaDetail dilemma={dilemma} />)
+        
+        
+      })}
     </div>
   )
 }
