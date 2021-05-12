@@ -3,7 +3,18 @@ import { useState } from 'react'
 export default function Profile({ username }) {
   return (
     <main className="w-5/6 m-auto my-4">
-      <div className="w-full border border-black">
+      <div>
+        <section>
+          <h3>{username}</h3>
+          <h4>Header text will go here</h4>
+          <img src="https://github.com/Team-Pythog/lets-git-ethical/blob/dev/lets-git-ethical/images/ewok.jpg?raw=true"></img>
+          <p>Bio text will go here</p>
+        </section>
+        <section>
+
+        </section>
+      </div>
+      {/* <div className="w-full border border-black">
         <div className="w-1/6 mx-8 my-8 border border-black">
           <img className="" src="https://github.com/Team-Pythog/lets-git-ethical/blob/dev/lets-git-ethical/images/ewok.jpg?raw=true"></img>
           <h1 className="text-center border border-black ">Ewok</h1>
@@ -42,7 +53,7 @@ export default function Profile({ username }) {
             <button className="w-1/6 p-10 mx-2 text-center border border-black flex-end ">View All</button>
           </ul>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

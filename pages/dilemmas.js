@@ -17,7 +17,7 @@ export default function Dilemmas() {
     if (!data) return;
     setDilemmas(data);
   }, [data])
-  // console.log(data)
+  console.log(data)
 
   if (error) return <h2>Something went wrong.</h2>
   if (!data) return <h2>Loading...</h2>
