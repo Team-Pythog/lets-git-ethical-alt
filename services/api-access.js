@@ -54,14 +54,13 @@ export async function getToken(values) {
   const url = "http://localhost:8000/token-auth/";
 
   const response = await axios.post(url, values);
-
+  console.log(response.data.token)
   // const refreshUrl = "http://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
-  // const refreshUrl = "http://localhost:8000/token-auth/refresh";
+  const refreshUrl = "http://localhost:8000/token-auth/refresh";
 
-  // const refreshResponse = await axios.post(refreshUrl, { refresh: response.data.refresh });
-
-  // return refreshResponse.data.access;
-  return response.data.token;
+  const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
+  console.log(refreshResponse.data.token)
+  return refreshResponse.data.token;
 }
 
 // GET from API with authentication
@@ -90,7 +89,9 @@ export async function dilemmaPost(token, values) {
 
   const config = makeConfig(token);
 
-  const response = await axios.post(ethicsUrl, body, config);
+  const response = await axios.post(ethicsUrl, { params: body }, config);
+
+  console.log(response.data)
 
   return response.data;
 }
