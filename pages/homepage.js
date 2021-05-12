@@ -2,8 +2,15 @@ import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Navigation from '../components/navigation'
 import Profile from '../components/profile'
+import DilemmaCreator from '../components/dilemma-creator'
+import { dilemmaPost } from '../services/api-access'
 
 export default function Homepage({ token, logoutEvent, username }) {
+  async function createDilemma(values) {
+
+    await dilemmaPost(token, values);
+
+  }
   return (
     <div className="">
       <Head>
@@ -11,6 +18,7 @@ export default function Homepage({ token, logoutEvent, username }) {
       </Head>
       <Navigation logoutEvent={logoutEvent} />
       <Profile username={username} />
+      <DilemmaCreator createEvent={createDilemma} />
     </div>
   )
 }

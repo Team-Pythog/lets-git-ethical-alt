@@ -29,6 +29,29 @@ export class Dilemma {
   }
 }
 
+export class Profile {
+
+  constructor(info) {
+    this.id = info.id;
+    this.user = info.user;
+    this.image = info.image;
+    this.header = info.header;
+    this.slug = info.slug;
+    this.bio = info.bio;
+  }
+
+  static fromValues(values) {
+    const info = {
+      id: values.id,
+      user: values.user,
+      image: values.image,
+      header: values.header,
+      slug: values.slug,
+      bio: values.bio,
+    }
+  }
+}
+
 // get a JSON Web Token from server
 export async function getToken(values) {
   // const url = "http://lets-git-ethical-be.herokuapp.com/token-auth/";
@@ -46,20 +69,20 @@ export async function getToken(values) {
 }
 
 // GET from API with authentication
-export async function fetchWithToken(url, token) {
+export async function dilemmaFetch(url, token) {
 
   const config = makeConfig(token);
 
   const response = await axios.get(url, config);
 
   const dilemmas = response.data.map(info => new Dilemma(info));
-  console.log(dilemmas)
+
   return dilemmas;
 }
 
 
 // POST to API with authentication
-export async function postWithToken(token, values) {
+export async function dilemmaPost(token, values) {
 
   const body = {
     id: -1, // will be overwritten once cache revalidates
@@ -77,6 +100,34 @@ export async function postWithToken(token, values) {
   return response.data;
 }
 
+export async function profileFetch(url, token) {
+
+  const config = makeConfig(token);
+
+  const response = await axios.get(url, config);
+
+  const profileInfo = new Profile(response.data);
+
+  return profileInfo;
+}
+
+export async function profilePost(token, values) {
+
+  const body = {
+    id: values.id,
+    user: values.user,
+    image: values.image,
+    header: values.header,
+    slug: values.slug,
+    bio: values.bio,
+  }
+
+  const config = makeConfig(token);
+
+  const response = await axios.post(accountsUrl, body, config);
+
+  return response.data;
+}
 
 // helper function to handle getting Authorization headers EXACTLY right
 
@@ -87,10 +138,3 @@ function makeConfig(token) {
     }
   }
 }
-// function makeConfig(token) {
-//   return {
-//     headers: {
-//       'Authorization': 'Bearer ' + token
-//     }
-//   }
-// }
