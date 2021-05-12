@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
-export const ethicsUrl = 'https://localhost:8000/ethics_app/'
+export const ethicsUrl = 'http://localhost:8000/ethics_app/'
 export const accountsUrl = 'https://lets-git-ethical-be.herokuapp.com/account/'
 
 export class Dilemma {
@@ -31,18 +31,18 @@ export class Dilemma {
 
 // get a JSON Web Token from server
 export async function getToken(values) {
-  // const url = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
-  const url = "https://localhost:8000/token-auth/";
+  // const url = "http://lets-git-ethical-be.herokuapp.com/token-auth/";
+  const url = "http://localhost:8000/token-auth/";
 
   const response = await axios.post(url, values);
 
-  // const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
-  // const refreshUrl = "https://localhost:8000/token-auth/refresh";
+  // const refreshUrl = "http://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  // const refreshUrl = "http://localhost:8000/token-auth/refresh";
 
   // const refreshResponse = await axios.post(refreshUrl, { refresh: response.data.refresh });
 
   // return refreshResponse.data.access;
-  return response.data.access;
+  return response.data.token;
 }
 
 // GET from API with authentication
