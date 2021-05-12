@@ -5,11 +5,12 @@ import Head from 'next/head'
 import Navigation from '../components/navigation'
 import DilemmaCreator from '../components/dilemma-creator'
 import DilemmaList from '../components/dilemma-list'
+import axios from 'axios'
 
 export default function Dilemmas() {
-
+  
   const token = typeof window !== 'undefined' ? localStorage.getItem('ethics_token') : null
-  console.log(token)
+  // console.log("this token", token)
   const { data, error, mutate } = useSWR([ethicsUrl, token], fetchWithToken);
 
   const [dilemmas, setDilemmas] = useState([]);
@@ -18,6 +19,7 @@ export default function Dilemmas() {
     if (!data) return;
     setDilemmas(data);
   }, [data])
+  // console.log(data)
 
   if (error) return <h2>Something went wrong.</h2>
   if (!data) return <h2>Loading...</h2>
@@ -45,7 +47,7 @@ export default function Dilemmas() {
       </Head>
       <Navigation />
       <DilemmaCreator token={token} createEvent={createDilemma} />
-      <DilemmaList list={dilemmas} />
+      <DilemmaList dilemmas={dilemmas} />
     </div>
   )
 }
