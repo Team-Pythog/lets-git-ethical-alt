@@ -6,7 +6,7 @@ import DilemmaCreator from '../components/dilemma-creator'
 import { dilemmaPost } from '../services/api-access'
 
 export default function Homepage({ token, logoutEvent, username }) {
-  async function createDilemma(values) {
+  async function createDilemma(token, values) {
 
     await dilemmaPost(token, values);
 
@@ -18,7 +18,7 @@ export default function Homepage({ token, logoutEvent, username }) {
       </Head>
       <Navigation logoutEvent={logoutEvent} />
       <Profile username={username} />
-      <DilemmaCreator createEvent={createDilemma} />
+      <DilemmaCreator token={token} createEvent={createDilemma} />
     </div>
   )
 }

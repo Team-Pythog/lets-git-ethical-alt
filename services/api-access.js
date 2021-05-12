@@ -89,7 +89,7 @@ export async function dilemmaPost(token, values) {
 
   const config = makeConfig(token);
 
-  const response = await axios.post(ethicsUrl, { params: body }, config);
+  const response = await axios.post(ethicsUrl, body, config);
 
   console.log(response.data)
 
