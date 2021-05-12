@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import useSWR from 'swr'
-import { Dilemma, getToken, fetchWithToken, postWithToken, ethicsUrl } from '../services/api-access'
+import { Dilemma, fetchWithToken, postWithToken, ethicsUrl } from '../services/api-access'
 import Head from 'next/head'
 import Navigation from '../components/navigation'
 import DilemmaCreator from '../components/dilemma-creator'
@@ -8,7 +8,7 @@ import DilemmaList from '../components/dilemma-list'
 
 export default function Dilemmas() {
 
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+  const token = typeof window !== 'undefined' ? localStorage.getItem('ethics_token') : null
   console.log(token)
   const { data, error, mutate } = useSWR([ethicsUrl, token], fetchWithToken);
 
