@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function DilemmaCreator({ createEvent }) {
+export default function DilemmaCreator({ token, createEvent }) {
   const reset = {
     title: '',
     image: '',
@@ -12,7 +12,7 @@ export default function DilemmaCreator({ createEvent }) {
 
   function submitHandler(event) {
     event.preventDefault();
-    createEvent(values);
+    createEvent(token, values);
     setValues(reset);
   }
 
