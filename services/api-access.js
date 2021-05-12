@@ -7,7 +7,6 @@ export const accountsUrl = 'https://lets-git-ethical-be.herokuapp.com/account/'
 export class Dilemma {
 
   constructor(info) {
-    this.id = info.id;
     this.title = info.title;
     this.image = info.image;
     this.text = info.text;
@@ -17,7 +16,6 @@ export class Dilemma {
 
   static fromValues(values) {
     const info = {
-      id: -1, // will be overwritten once cache revalidates
       title: values.title,
       image: values.image,
       text: values.text,
@@ -32,7 +30,6 @@ export class Dilemma {
 export class Profile {
 
   constructor(info) {
-    this.id = info.id;
     this.user = info.user;
     this.image = info.image;
     this.header = info.header;
@@ -42,7 +39,6 @@ export class Profile {
 
   static fromValues(values) {
     const info = {
-      id: values.id,
       user: values.user,
       image: values.image,
       header: values.header,
@@ -85,7 +81,6 @@ export async function dilemmaFetch(url, token) {
 export async function dilemmaPost(token, values) {
 
   const body = {
-    id: -1, // will be overwritten once cache revalidates
     title: values.title,
     image: values.image,
     text: values.text,
@@ -114,7 +109,6 @@ export async function profileFetch(url, token) {
 export async function profilePost(token, values) {
 
   const body = {
-    id: values.id,
     user: values.user,
     image: values.image,
     header: values.header,
