@@ -1,14 +1,28 @@
-import { useState } from 'react'
+export default function Profile({ username, token, profileDataGenerator }) {
 
-export default function Profile({ username }) {
+  // const profileInfo = profileFetch(username, fetchedToken)
+
+  // const profileInfo = typeof window !== 'undefined' ? localStorage.getItem('profile_info') : null
+  const profileHeader = typeof window !== 'undefined' ? localStorage.getItem('profile_header') : null
+  const profileImage = typeof window !== 'undefined' ? localStorage.getItem('profile_image') : null
+  const profileBio = typeof window !== 'undefined' ? localStorage.getItem('profile_bio') : null
+  // console.log('Profile info after localstorage:', profileInfo)
+
+  // const profileInfo = profileDataGenerator(username, token)
+  // console.log('THRESHOLD 1')
+  // console.log(profileInfo)
+
   return (
     <main className="w-5/6 m-auto my-4">
       <div>
         <section>
           <h3>{username}</h3>
-          <h4>Header text will go here</h4>
-          <img src="https://github.com/Team-Pythog/lets-git-ethical/blob/dev/lets-git-ethical/images/ewok.jpg?raw=true"></img>
-          <p>Bio text will go here</p>
+          {/* <h4>{profileInfo.header}</h4>
+          <img src={profileInfo.image}></img>
+          <p>{profileInfo.bio}</p> */}
+          <h4>{profileHeader}</h4>
+          <img src={profileImage}></img>
+          <p>{profileBio}</p>
         </section>
         <section>
 

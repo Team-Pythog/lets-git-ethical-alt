@@ -28,19 +28,15 @@ export class Dilemma {
 export class Profile {
 
   constructor(info) {
-    this.user = info.user;
     this.image = info.image;
     this.header = info.header;
-    this.slug = info.slug;
     this.bio = info.bio;
   }
 
   static fromValues(values) {
     const info = {
-      user: values.user,
       image: values.image,
       header: values.header,
-      slug: values.slug,
       bio: values.bio,
     }
   }
@@ -90,7 +86,7 @@ export async function dilemmaPost(token, values) {
 
 export async function profileFetch(username, token) {
 
-  const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/${username}/profile/`
+  const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/profile/${username}`
 
   const config = makeConfig(token);
 
@@ -104,10 +100,8 @@ export async function profileFetch(username, token) {
 export async function profilePost(token, values) {
 
   const body = {
-    user: values.user,
     image: values.image,
     header: values.header,
-    slug: values.slug,
     bio: values.bio,
   }
 
