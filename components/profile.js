@@ -1,28 +1,13 @@
-export default function Profile({ username, token, profileDataGenerator }) {
-
-  // const profileInfo = profileFetch(username, fetchedToken)
-
-  // const profileInfo = typeof window !== 'undefined' ? localStorage.getItem('profile_info') : null
-  const profileHeader = typeof window !== 'undefined' ? localStorage.getItem('profile_header') : null
-  const profileImage = typeof window !== 'undefined' ? localStorage.getItem('profile_image') : null
-  const profileBio = typeof window !== 'undefined' ? localStorage.getItem('profile_bio') : null
-  // console.log('Profile info after localstorage:', profileInfo)
-
-  // const profileInfo = profileDataGenerator(username, token)
-  // console.log('THRESHOLD 1')
-  // console.log(profileInfo)
+export default function Profile({ username, profileInfo }) {
 
   return (
     <main className="w-5/6 m-auto my-4">
       <div>
         <section>
           <h3>{username}</h3>
-          {/* <h4>{profileInfo.header}</h4>
+          <h4>{profileInfo.header}</h4>
           <img src={profileInfo.image}></img>
-          <p>{profileInfo.bio}</p> */}
-          <h4>{profileHeader}</h4>
-          <img src={profileImage}></img>
-          <p>{profileBio}</p>
+          <p>{profileInfo.bio}</p>
         </section>
         <section>
 

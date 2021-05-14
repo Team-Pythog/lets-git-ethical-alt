@@ -3,7 +3,6 @@ import axios from 'axios'
 export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
 
 export class Dilemma {
-
   constructor(info) {
     this.title = info.title;
     this.image = info.image;
@@ -11,34 +10,13 @@ export class Dilemma {
     this.response_0 = info.response_0;
     this.response_1 = info.response_1;
   }
-
-  static fromValues(values) {
-    const info = {
-      title: values.title,
-      image: values.image,
-      text: values.text,
-      response_0: values.response_0,
-      response_1: values.response_1,
-    }
-
-    return new Dilemma(info);
-  }
 }
 
 export class Profile {
-
   constructor(info) {
     this.image = info.image;
     this.header = info.header;
     this.bio = info.bio;
-  }
-
-  static fromValues(values) {
-    const info = {
-      image: values.image,
-      header: values.header,
-      bio: values.bio,
-    }
   }
 }
 
@@ -46,11 +24,11 @@ export async function getToken(values) {
   const sessionUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
 
   const sessionResponse = await axios.post(sessionUrl, values);
-  console.log(sessionResponse.data.token)
+
   const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
 
   const refreshResponse = await axios.post(refreshUrl, { token: sessionResponse.data.token });
-  console.log(refreshResponse.data.token)
+
   return refreshResponse.data.token;
 }
 
