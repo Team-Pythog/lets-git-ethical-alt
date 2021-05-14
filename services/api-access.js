@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-// export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
-export const ethicsUrl = 'http://localhost:8000/ethics_app/'
+export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
 
 export class Dilemma {
 
@@ -48,13 +47,11 @@ export class Profile {
 }
 
 export async function getToken(values) {
-  // const url = "http://lets-git-ethical-be.herokuapp.com/token-auth/";
-  const url = "http://localhost:8000/token-auth/";
+  const url = "http://lets-git-ethical-be.herokuapp.com/token-auth/";
 
   const response = await axios.post(url, values);
   console.log(response.data.token)
-  // const refreshUrl = "http://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
-  const refreshUrl = "http://localhost:8000/token-auth/refresh";
+  const refreshUrl = "http://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
 
   const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
   console.log(refreshResponse.data.token)
