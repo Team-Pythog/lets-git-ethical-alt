@@ -6,9 +6,15 @@ import Homepage from './homepage'
 
 export default function Home() {
 
+  // const currentToken = typeof window !== 'undefined' ? localStorage.getItem('ethics_token') : null
+
+  // const [token, setToken] = useState(currentToken);
+
   const [token, setToken] = useState();
 
   const [username, setUsername] = useState('');
+
+  const [profileInfo, setProfileInfo] = useState({ image: '', header: '', bio: '' });
 
   async function loginHandler(values) {
 
@@ -18,27 +24,12 @@ export default function Home() {
 
     const profileInfo = await profileFetch(values.username, fetchedToken)
       .then((profileInfo) => {
-        let profileHeader = profileInfo.header
-        let profileImage = profileInfo.image
-        let profileBio = profileInfo.bio
-        console.log('Profile info before localstorage:', profileInfo)
-        console.log('THRESHOLD 0')
-        // if (typeof window !== 'undefined') { localStorage.setItem('profile_info', profileInfo) }
-        if (typeof window !== 'undefined') { localStorage.setItem('profile_header', profileHeader) }
-        if (typeof window !== 'undefined') { localStorage.setItem('profile_image', profileImage) }
-        if (typeof window !== 'undefined') { localStorage.setItem('profile_bio', profileBio) }
-        console.log('THRESHOLD 1')
+        setProfileInfo(profileInfo)
+
         setToken(fetchedToken);
-        console.log('THRESHOLD 2')
+
         setUsername(values.username);
-        console.log('THRESHOLD 3')
       });
-    // console.log('Profile info before localstorage:', profileInfo)
-    // if (typeof window !== 'undefined') { localStorage.setItem('profile_info', profileInfo) }
-
-    // setToken(fetchedToken);
-
-    // setUsername(values.username);
   }
 
   function logoutHandler() {
@@ -47,6 +38,6 @@ export default function Home() {
 
   if (!token) return <LoginForm onSubmit={loginHandler} />
 
-  return <Homepage token={token} onLogout={logoutHandler} username={username} />
+  return <Homepage token={token} username={username} profileInfo={profileInfo} onLogout={logoutHandler} />
 }
 
