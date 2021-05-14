@@ -47,11 +47,11 @@ export class Profile {
 }
 
 export async function getToken(values) {
-  const url = "http://lets-git-ethical-be.herokuapp.com/token-auth/";
+  const url = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
 
   const response = await axios.post(url, values);
   console.log(response.data.token)
-  const refreshUrl = "http://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
 
   const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
   console.log(refreshResponse.data.token)
@@ -93,8 +93,8 @@ export async function dilemmaPost(token, values) {
 
 export async function profileFetch(username, token) {
 
-  // const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/${username}/profile/`
-  const profileUrl = `http://localhost:8000/account/${username}/profile/`
+  const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/${username}/profile/`
+  // const profileUrl = `http://localhost:8000/account/${username}/profile/`
 
   const config = makeConfig(token);
 
