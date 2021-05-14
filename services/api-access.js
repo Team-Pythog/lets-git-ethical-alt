@@ -50,12 +50,13 @@ export async function getToken(values) {
   const url = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
 
   const response = await axios.post(url, values);
-  console.log(response.data.token)
-  const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  // console.log(response.data.token)
+  // const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
 
-  const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
-  console.log(refreshResponse.data.token)
-  return refreshResponse.data.token;
+  // const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
+  // console.log(refreshResponse.data.token)
+  // return refreshResponse.data.token;
+  return response.data.token;
 }
 
 // GET from API with authentication
