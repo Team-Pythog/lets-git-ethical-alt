@@ -47,19 +47,17 @@ export class Profile {
 }
 
 export async function getToken(values) {
-  const url = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
+  const sessionUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
 
-  const response = await axios.post(url, values);
-  // console.log(response.data.token)
-  // const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  const sessionResponse = await axios.post(sessionUrl, values);
+  console.log(sessionResponse.data.token)
+  const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
 
-  // const refreshResponse = await axios.post(refreshUrl, { token: response.data.token });
-  // console.log(refreshResponse.data.token)
-  // return refreshResponse.data.token;
-  return response.data.token;
+  const refreshResponse = await axios.post(refreshUrl, { token: sessionResponse.data.token });
+  console.log(refreshResponse.data.token)
+  return refreshResponse.data.token;
 }
 
-// GET from API with authentication
 export async function dilemmaFetch(url, token) {
 
   const config = makeConfig(token);
@@ -71,8 +69,6 @@ export async function dilemmaFetch(url, token) {
   return dilemmas;
 }
 
-
-// POST to API with authentication
 export async function dilemmaPost(token, values) {
 
   const body = {
@@ -95,7 +91,6 @@ export async function dilemmaPost(token, values) {
 export async function profileFetch(username, token) {
 
   const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/${username}/profile/`
-  // const profileUrl = `http://localhost:8000/account/${username}/profile/`
 
   const config = makeConfig(token);
 
@@ -123,7 +118,6 @@ export async function profilePost(token, values) {
   return response.data;
 }
 
-// helper function to handle getting Authorization headers EXACTLY right
 
 function makeConfig(token) {
   return {
