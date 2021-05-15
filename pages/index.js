@@ -14,7 +14,7 @@ export default function Home() {
 
   const [username, setUsername] = useState('');
 
-  const [profileInfo, setProfileInfo] = useState({ image: '', header: '', bio: '' });
+  // const [profileInfo, setProfileInfo] = useState({ image: '', header: '', bio: '' });
 
   async function loginHandler(values) {
 
@@ -24,8 +24,12 @@ export default function Home() {
 
     const profileInfo = await profileFetch(values.username, fetchedToken)
       .then((profileInfo) => {
-        setProfileInfo(profileInfo)
-
+        // setProfileInfo(profileInfo)
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('profile_header', profileInfo.header)
+          localStorage.setItem('profile_image', profileInfo.image)
+          localStorage.setItem('profile_bio', profileInfo.bio)
+        }
         setToken(fetchedToken);
 
         setUsername(values.username);
@@ -38,6 +42,6 @@ export default function Home() {
 
   if (!token) return <LoginForm onSubmit={loginHandler} />
 
-  return <Homepage token={token} username={username} profileInfo={profileInfo} onLogout={logoutHandler} />
+  return <Homepage token={token} username={username} onLogout={logoutHandler} />
 }
 

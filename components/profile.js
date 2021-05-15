@@ -1,8 +1,8 @@
-export default function Profile({ username, profileInfo }) {
+export default function Profile({ username }) {
 
-  const header = profileInfo.header
-  const image = profileInfo.image
-  const bio = profileInfo.bio
+  const profileHeader = typeof window !== 'undefined' ? localStorage.getItem('profile_header') : null
+  const profileImage = typeof window !== 'undefined' ? localStorage.getItem('profile_image') : null
+  const profileBio = typeof window !== 'undefined' ? localStorage.getItem('profile_bio') : null
 
   return (
     <main className="w-5/6 m-auto my-4 bg-green-500 rounded-md">
@@ -12,9 +12,9 @@ export default function Profile({ username, profileInfo }) {
           {/* <h4>{profileInfo.header}</h4>
           <img src={profileInfo.image}></img>
           <p>{profileInfo.bio}</p> */}
-          <h4>{header}</h4>
-          <img src={image}></img>
-          <p>{bio}</p>
+          <h4>{profileHeader}</h4>
+          <img src={profileImage}></img>
+          <p>{profileBio}</p>
         </section>
         <section>
 
