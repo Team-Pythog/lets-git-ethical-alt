@@ -23,7 +23,7 @@ export default function Dilemmas() {
   if (!data) return <h2>Loading...</h2>
 
   return (
-    <body className="w-full h-screen bg-red-400 ">
+    <body className="w-full bg-blue-300 ">
       <div>
         <Head>
           <title>Let's Git Ethical</title>
