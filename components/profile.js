@@ -1,8 +1,13 @@
-export default function Profile({ username, profileInfo }) {
+export default function Profile({ username }) {
+
+  const profileHeader = typeof window !== 'undefined' ? localStorage.getItem('profile_header') : null
+  const profileImage = typeof window !== 'undefined' ? localStorage.getItem('profile_image') : null
+  const profileBio = typeof window !== 'undefined' ? localStorage.getItem('profile_bio') : null
 
   return (
     <main className="w-5/6 p-3 m-auto my-4 bg-purple-400 rounded-md">
       <div>
+
           <h3 className="text-2xl text-green-200">Welcome {username}!</h3>
         <section className="grid grid-flow-row grid-flow-col grid-cols-2 grid-rows-1 text-white bg-red-300 rounded-lg place-items-center auto-cols-fr">
           <div className="p-3 grid-start-1">
@@ -10,6 +15,7 @@ export default function Profile({ username, profileInfo }) {
             <img className="border border-white rounded-lg " src={profileInfo.image}></img>
           </div>
           <p className="p-3 mx-2 bg-blue-500 rounded-lg grid-end-2">{profileInfo.bio}</p>
+
         </section>
         <section>
 

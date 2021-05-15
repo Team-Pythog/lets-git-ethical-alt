@@ -4,7 +4,7 @@ import Profile from '../components/profile'
 import DilemmaCreator from '../components/dilemma-creator'
 import { dilemmaPost } from '../services/api-access'
 
-export default function Homepage({ token, username, profileInfo, logoutEvent }) {
+export default function Homepage({ token, username, logoutEvent }) {
 
   async function createDilemma(token, values) {
 
@@ -17,7 +17,7 @@ export default function Homepage({ token, username, profileInfo, logoutEvent }) 
         <title>Let's Git Ethical</title>
       </Head>
       <Navigation logoutEvent={logoutEvent} />
-      <Profile username={username} profileInfo={profileInfo} />
+      <Profile username={username} />
       <DilemmaCreator token={token} createEvent={createDilemma} />
     </div>
   )
