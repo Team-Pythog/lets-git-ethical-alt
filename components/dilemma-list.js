@@ -7,8 +7,6 @@ export default function DilemmaList({ dilemmas }) {
         {dilemmas.map((dilemma, i) => {
           console.log(dilemma);
           return (<DilemmaDetail dilemma={dilemma} />)
-
-
         })}
       </div>
     </body>
