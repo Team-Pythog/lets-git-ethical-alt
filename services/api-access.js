@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
+// export const ethicsUrl = 'https://lets-git-ethical-be.herokuapp.com/ethics_app/'
+export const ethicsUrl = 'http://localhost:8000/ethics_app/'
 
 export class Dilemma {
   constructor(info) {
@@ -21,11 +22,14 @@ export class Profile {
 }
 
 export async function getToken(values) {
-  const sessionUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
+  // const sessionUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/";
+  const sessionUrl = "http://localhost:8000/token-auth/";
+
 
   const sessionResponse = await axios.post(sessionUrl, values);
 
-  const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  // const refreshUrl = "https://lets-git-ethical-be.herokuapp.com/token-auth/refresh";
+  const refreshUrl = "http://localhost:8000/token-auth/refresh";
 
   const refreshResponse = await axios.post(refreshUrl, { token: sessionResponse.data.token });
 
@@ -64,7 +68,8 @@ export async function dilemmaPost(token, values) {
 
 export async function profileFetch(username, token) {
 
-  const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/profile/${username}`
+  // const profileUrl = `https://lets-git-ethical-be.herokuapp.com/account/profile/${username}`
+  const profileUrl = `http://localhost:8000/account/profile/${username}`
 
   const config = makeConfig(token);
 

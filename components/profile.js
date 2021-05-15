@@ -1,7 +1,7 @@
 export default function Profile({ username, profileInfo }) {
 
   return (
-    <main className="w-5/6 m-auto my-4">
+    <main className="w-5/6 m-auto my-4 bg-green-500 rounded-md">
       <div>
         <section>
           <h3>{username}</h3>

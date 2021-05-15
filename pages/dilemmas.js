@@ -23,12 +23,14 @@ export default function Dilemmas() {
   if (!data) return <h2>Loading...</h2>
 
   return (
-    <div>
-      <Head>
-        <title>Let's Git Ethical</title>
-      </Head>
-      <Navigation />
-      <DilemmaList dilemmas={dilemmas} />
-    </div>
+    <body className="w-full h-screen bg-red-400 ">
+      <div>
+        <Head>
+          <title>Let's Git Ethical</title>
+        </Head>
+        <Navigation />
+        <DilemmaList dilemmas={dilemmas} />
+      </div>
+    </body>
   )
 }
