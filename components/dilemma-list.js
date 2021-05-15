@@ -2,7 +2,7 @@ import DilemmaDetail from './dilemma-detail'
 
 export default function DilemmaList({ dilemmas }) {
   return (
-    <body className="h-screen m-auto my-4 bg-red-500 rounded-md ">
+    <body className="w-5/6 m-auto my-4 bg-blue-300 rounded-md ">
       <div>
         {dilemmas.map((dilemma, i) => {
           console.log(dilemma);
