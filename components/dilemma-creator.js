@@ -26,7 +26,7 @@ export default function DilemmaCreator({ token, createEvent }) {
   }
   return (
     <div className="w-5/6 p-3 m-auto text-green-800 bg-red-300 rounded-lg">
-      <form className="grid grid-flow-row grid-flow-col grid-rows-5 gap-4" onSubmit={submitHandler}>
+      <form className="grid grid-flow-row grid-rows-5 gap-4" onSubmit={submitHandler}>
         <input type="text" placeholder='Name of Dilemma' name='title' value={values.title} onChange={inputChangeHandler} required />
         <input  type="file" name="image" accept="image/png, image/jpeg, image/gif" value={values.image} onChange={inputChangeHandler} />
         <input className="" type="text" placeholder='Your Dilemma' name='text' value={values.text} onChange={inputChangeHandler} required />
