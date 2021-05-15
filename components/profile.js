@@ -11,10 +11,10 @@ export default function Profile({ username }) {
           <h3 className="text-2xl text-green-200">Welcome {username}!</h3>
         <section className="grid grid-flow-row grid-flow-col grid-cols-2 grid-rows-1 text-white bg-red-300 rounded-lg place-items-center auto-cols-fr">
           <div className="p-3 grid-start-1">
-            <h4 className="text-3xl">{profileInfo.header}</h4>
-            <img className="border border-white rounded-lg " src={profileInfo.image}></img>
+            <h4 className="text-3xl">{profileHeader}</h4>
+            <img className="border border-white rounded-lg " src={profileImage}></img>
           </div>
-          <p className="p-3 mx-2 bg-blue-500 rounded-lg grid-end-2">{profileInfo.bio}</p>
+          <p className="p-3 mx-2 bg-blue-500 rounded-lg grid-end-2">{profileBio}</p>
 
         </section>
         <section>
