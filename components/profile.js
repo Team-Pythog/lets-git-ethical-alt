@@ -1,13 +1,20 @@
 export default function Profile({ username, profileInfo }) {
 
+  const header = profileInfo.header
+  const image = profileInfo.image
+  const bio = profileInfo.bio
+
   return (
     <main className="w-5/6 m-auto my-4 bg-green-500 rounded-md">
       <div>
         <section>
           <h3>{username}</h3>
-          <h4>{profileInfo.header}</h4>
+          {/* <h4>{profileInfo.header}</h4>
           <img src={profileInfo.image}></img>
-          <p>{profileInfo.bio}</p>
+          <p>{profileInfo.bio}</p> */}
+          <h4>{header}</h4>
+          <img src={image}></img>
+          <p>{bio}</p>
         </section>
         <section>
 
